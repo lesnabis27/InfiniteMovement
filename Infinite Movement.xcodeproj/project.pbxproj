@@ -13,6 +13,7 @@
 		22D312B9211B822B00EAAA83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D312B8211B822B00EAAA83 /* Assets.xcassets */; };
 		22D312BC211B822B00EAAA83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D312BA211B822B00EAAA83 /* LaunchScreen.storyboard */; };
 		22D312C7211B822B00EAAA83 /* Infinite_MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312C6211B822B00EAAA83 /* Infinite_MovementTests.swift */; };
+		22D312D3211B851300EAAA83 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312D2211B851300EAAA83 /* Vector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		22D312C2211B822B00EAAA83 /* Infinite MovementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Infinite MovementTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D312C6211B822B00EAAA83 /* Infinite_MovementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infinite_MovementTests.swift; sourceTree = "<group>"; };
 		22D312C8211B822B00EAAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22D312D2211B851300EAAA83 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				22D312B8211B822B00EAAA83 /* Assets.xcassets */,
 				22D312BA211B822B00EAAA83 /* LaunchScreen.storyboard */,
 				22D312BD211B822B00EAAA83 /* Info.plist */,
+				22D312D2211B851300EAAA83 /* Vector.swift */,
 			);
 			path = "Infinite Movement";
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22D312B4211B822900EAAA83 /* ViewController.swift in Sources */,
+				22D312D3211B851300EAAA83 /* Vector.swift in Sources */,
 				22D312B2211B822900EAAA83 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
