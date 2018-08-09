@@ -14,6 +14,7 @@
 		22D312BC211B822B00EAAA83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D312BA211B822B00EAAA83 /* LaunchScreen.storyboard */; };
 		22D312C7211B822B00EAAA83 /* Infinite_MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312C6211B822B00EAAA83 /* Infinite_MovementTests.swift */; };
 		22D312D3211B851300EAAA83 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312D2211B851300EAAA83 /* Vector.swift */; };
+		22D312D5211B8DC600EAAA83 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312D4211B8DC600EAAA83 /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		22D312C6211B822B00EAAA83 /* Infinite_MovementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infinite_MovementTests.swift; sourceTree = "<group>"; };
 		22D312C8211B822B00EAAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22D312D2211B851300EAAA83 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		22D312D4211B8DC600EAAA83 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +83,12 @@
 			children = (
 				22D312B1211B822900EAAA83 /* AppDelegate.swift */,
 				22D312B3211B822900EAAA83 /* ViewController.swift */,
+				22D312D4211B8DC600EAAA83 /* CanvasView.swift */,
+				22D312D2211B851300EAAA83 /* Vector.swift */,
 				22D312B5211B822900EAAA83 /* Main.storyboard */,
 				22D312B8211B822B00EAAA83 /* Assets.xcassets */,
 				22D312BA211B822B00EAAA83 /* LaunchScreen.storyboard */,
 				22D312BD211B822B00EAAA83 /* Info.plist */,
-				22D312D2211B851300EAAA83 /* Vector.swift */,
 			);
 			path = "Infinite Movement";
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				22D312B4211B822900EAAA83 /* ViewController.swift in Sources */,
 				22D312D3211B851300EAAA83 /* Vector.swift in Sources */,
+				22D312D5211B8DC600EAAA83 /* CanvasView.swift in Sources */,
 				22D312B2211B822900EAAA83 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

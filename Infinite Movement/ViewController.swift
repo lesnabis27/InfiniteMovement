@@ -10,16 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var timer: Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0/30.0, repeats: true, block: update)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
 
+    @objc func update(_: Timer) {
+        // Refresh view
+    }
 
 }
 
