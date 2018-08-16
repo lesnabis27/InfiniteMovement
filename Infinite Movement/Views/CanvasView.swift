@@ -8,11 +8,42 @@
 
 import UIKit
 
-class CanvasView: UIView {
+// This is where the art is drawn to, and where user interaction with the simulation is recognized
 
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    // override func draw(_ rect: CGRect) {
-    // }
+class CanvasView: UIView {
+    
+    var tapGestureRecognizer: UITapGestureRecognizer?
+    weak var delegate: TappableViewDelegate?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initGestureRecognition()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initGestureRecognition()
+    }
+    
+    func initGestureRecognition() {
+        isUserInteractionEnabled = true
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(_:)))
+        self.addGestureRecognizer(tapGestureRecognizer!)
+    }
+    
+    @objc func tapGestureAction(_ tapGesture: UITapGestureRecognizer) {
+        let location = tapGesture.location(in: superview)
+        
+        switch tapGesture.state {
+        case .began:
+            delegate?.tapGestureDidBegin?(tapGesture, location: location)
+            break
+        case .ended:
+            delegate?.tapGestureDidEnd?(tapGesture, location: location)
+            break
+        default:
+            break
+        }
+    }
 
 }

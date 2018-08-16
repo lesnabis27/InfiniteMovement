@@ -16,16 +16,16 @@ class DraggableView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUpGestureRecognition()
+        initGestureRecognition()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setUpGestureRecognition()
+        initGestureRecognition()
     }
     
     // Make the view draggable
-    func setUpGestureRecognition() {
+    func initGestureRecognition() {
         isUserInteractionEnabled = true
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGestureAction(_:)))
         self.addGestureRecognizer(panGestureRecognizer!)

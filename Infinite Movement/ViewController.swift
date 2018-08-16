@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DraggableViewDelegate {
+class ViewController: UIViewController, DraggableViewDelegate, TappableViewDelegate {
 
     var timer: Timer!
     var fps = FPSMonitor()
