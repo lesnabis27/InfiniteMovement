@@ -12,6 +12,7 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
 
     var timer: Timer!
     var fps = FPSMonitor()
+    var attractors = [Attractor]()
     
     @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var fpsOverlayView: OverlayView!
@@ -56,8 +57,8 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
     // MARK: - TappableViewDelegate
     
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
-        let attractor = Attractor(location)
-        view.addSubview(attractor.view)
+        attractors.append(Attractor(location))
+        view.addSubview(attractors.last!.view)
     }
     
 }
