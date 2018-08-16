@@ -12,10 +12,7 @@ class CanvasView: UIView {
 
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(rect: rect)
-        UIColor.cyan.setFill()
-        path.fill()
-    }
+    // override func draw(_ rect: CGRect) {
+    // }
 
 }

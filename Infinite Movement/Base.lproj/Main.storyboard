@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,16 +22,29 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tm-gb-faM" customClass="OverlayView" customModule="Infinite_Movement" customModuleProvider="target">
+                                <rect key="frame" x="127.66666666666669" y="714" width="120" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8XC-yU-Mgs"/>
+                                    <constraint firstAttribute="height" constant="64" id="Psz-0b-lIV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4sO-tG-2ul"/>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6MS-cF-3iG"/>
+                            <constraint firstItem="7Tm-gb-faM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="DRq-0B-0HN"/>
+                            <constraint firstItem="7Tm-gb-faM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KR8-f9-I9f"/>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XkF-ch-r9q"/>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fWy-g6-pDM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="canvas" destination="K0p-j6-I6B" id="eBH-Sl-XXN"/>
+                        <outlet property="fpsOverlayView" destination="7Tm-gb-faM" id="LdJ-rh-cRb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
