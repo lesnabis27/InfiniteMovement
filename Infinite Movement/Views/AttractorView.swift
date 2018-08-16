@@ -8,6 +8,8 @@
 
 import UIKit
 
+// This is a dot to represent a gravitational attractor on the screen
+
 class AttractorView: DraggableView {
 
     let effectBackground = UIVisualEffectView(effect: UIBlurEffect(style: .dark))

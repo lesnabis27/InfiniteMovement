@@ -6,6 +6,8 @@
 //  Copyright © 2018 Sam Richardson. All rights reserved.
 //
 
+// TODO: Rewrite this as a CGPoint extension
+
 import Foundation
 import CoreGraphics
 

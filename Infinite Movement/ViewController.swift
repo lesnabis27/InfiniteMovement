@@ -19,6 +19,7 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         fpsOverlayView.delegate = self
+        canvas.delegate = self
         timer = Timer.scheduledTimer(withTimeInterval: 1.0/30.0, repeats: true, block: update)
     }
 
@@ -50,6 +51,13 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         canvas.layer.addSublayer(shapeLayer)
         // Calculate frames per second, for debug
         fps.update()
+    }
+    
+    // MARK: - TappableViewDelegate
+    
+    func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
+        let attractor = Attractor(location)
+        view.addSubview(attractor.view)
     }
     
 }
