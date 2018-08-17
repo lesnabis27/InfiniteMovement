@@ -14,29 +14,20 @@ class Mover: NSObject, Massive {
     
     // MARK: - Properties
     
-    var location: CGPoint
-    var velocity: CGPoint
-    var acceleration: CGPoint
-    var mass: CGFloat
-    var color: UIColor
+    var location = CGPoint()
+    var velocity = CGPoint()
+    var acceleration = CGPoint()
+    var mass: CGFloat = 1
+    var color = UIColor.orange
     
     // MARK: - Initializers
     
     override init() {
-        location = CGPoint()
-        velocity = CGPoint()
-        acceleration = CGPoint()
-        mass = 1.0
-        color = UIColor.orange
         super.init()
     }
     
     init(at point: CGPoint) {
         location = point
-        velocity = CGPoint()
-        acceleration = CGPoint()
-        mass = 1.0
-        color = UIColor.orange
         super.init()
     }
     
@@ -45,21 +36,21 @@ class Mover: NSObject, Massive {
             x: CGFloat.random(in: 0...view.bounds.width),
             y: CGFloat.random(in: 0...view.bounds.height)
         )
-        velocity = CGPoint()
-        acceleration = CGPoint()
-        mass = 1.0
-        color = UIColor.orange
         super.init()
     }
     
     // MARK: - Movement
     
-    // Apply acceleration to velocity and velocity to acceleration, reset acceleration for next loop
-    func move() {
+    // Add acceleration to velocity, reset acceleration for next loop
+    func applyAcceleration() {
         velocity += acceleration
         velocity = velocity.limit(10) // TODO: Change velocity limit to a user definable constant
-        location += velocity
         acceleration.zero()
+    }
+    
+    // Add velocity to location
+    func applyVelocity() {
+        location += velocity
     }
     
     // Wrap mover to other side of view when outside bounds
@@ -110,8 +101,8 @@ class Mover: NSObject, Massive {
     func seek(_ other: Massive) {
         var temp = other.location - location
         temp = temp.normalize()
-        temp *= mass * other.mass / location.squaredDistanceTo(other.location)
-        temp *= 0.1 // TODO: Change G to a user definable constant
+        temp *= mass * other.mass / location.distanceTo(other.location)
+        temp *= 2 // TODO: Change G to a user definable constant
         acceleration += temp
     }
     
@@ -120,6 +111,21 @@ class Mover: NSObject, Massive {
         if count > 1 {
             acceleration /= count
         }
+    }
+    
+    // MARK: - Drawing
+    
+    func draw(in view: UIView) {
+        let path = UIBezierPath(ovalIn: CGRect(
+            origin: location,
+            size: CGSize(width: 10, height: 10)
+        ))
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = color.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 3
+        view.layer.addSublayer(shapeLayer)
     }
 
 }

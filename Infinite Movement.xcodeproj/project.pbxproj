@@ -130,11 +130,11 @@
 		22D312B0211B822900EAAA83 /* Infinite Movement */ = {
 			isa = PBXGroup;
 			children = (
+				22D312B1211B822900EAAA83 /* AppDelegate.swift */,
 				222E013D2125A18300FF2D2A /* Extensions.swift */,
 				222342732124A32100E0813E /* Protocols */,
 				222342782124AA3600E0813E /* Views */,
 				222342792124AAA100E0813E /* Model */,
-				22D312B1211B822900EAAA83 /* AppDelegate.swift */,
 				22D312B3211B822900EAAA83 /* ViewController.swift */,
 				22D312B5211B822900EAAA83 /* Main.storyboard */,
 				22D312B8211B822B00EAAA83 /* Assets.xcassets */,

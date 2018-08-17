@@ -11,21 +11,46 @@ import UIKit
 @IBDesignable
 class OverlayView: DraggableView {
 
+    let effectBackground = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.clear
+        initEffect()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = UIColor.clear
+        initEffect()
     }
     
-    // Draw a dark rounded rectangle
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(roundedRect: rect, cornerRadius: 10)
-        UIColor.darkGray.setFill()
-        path.fill()
+    func initEffect() {
+        initLayer()
+        initEffectView()
+    }
+    
+    func initLayer() {
+        backgroundColor = UIColor.clear
+        layer.cornerRadius = frame.width * 0.5
+        layer.masksToBounds = false
+    }
+    
+    func initEffectView() {
+        effectBackground.frame = bounds
+        effectBackground.layer.cornerRadius = frame.width * 0.5
+        effectBackground.layer.masksToBounds = true
+        addSubview(effectBackground)
+        sendSubviewToBack(effectBackground)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: frame.width * 0.5)
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        layer.shadowOpacity = 0.4
+        layer.shadowRadius = 4
+        layer.shadowPath = shadowPath.cgPath
     }
 
 }

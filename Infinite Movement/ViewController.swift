@@ -13,14 +13,14 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
     var timer: Timer!
     var fps = FPSMonitor()
     var attractors = [Attractor]()
+    var movers = [Mover]()
     
     @IBOutlet weak var canvas: CanvasView!
-    @IBOutlet weak var fpsOverlayView: OverlayView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fpsOverlayView.delegate = self
         canvas.delegate = self
+        initMovers(in: canvas)
         timer = Timer.scheduledTimer(withTimeInterval: 1.0/30.0, repeats: true, block: update)
     }
 
@@ -33,25 +33,16 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         timer.invalidate()
     }
 
+    // Loop each frame
     @objc func update(_: Timer) {
         // Clear all sublayers
         canvas.layer.sublayers = nil
-        // Create path
-        let path = UIBezierPath()
-        let randomInWidth = CGFloat.random(in: 0..<canvas.bounds.width)
-        let randomInHeight = CGFloat.random(in: 0..<canvas.bounds.height)
-        path.move(to: CGPoint(x: canvas.bounds.width * 0.5, y: canvas.bounds.height * 0.5))
-        path.addLine(to: CGPoint(x: randomInWidth, y: randomInHeight))
-        // Create shape layer
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.blue.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 3
-        // Add shape layer to canvas
-        canvas.layer.addSublayer(shapeLayer)
+        // Update and draw movers
+        updateMovers()
+        drawMovers()
         // Calculate frames per second, for debug
         fps.update()
+        print(fps.averageString)
     }
     
     // MARK: - TappableViewDelegate
@@ -59,6 +50,31 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
         attractors.append(Attractor(location))
         view.addSubview(attractors.last!.view)
+    }
+    
+    // MARK: - Movers
+    
+    func initMovers(in view: UIView) {
+        for _ in (0..<100) {
+            movers.append(Mover(in: canvas))
+        }
+    }
+    
+    func updateMovers() {
+        for mover in movers {
+            mover.seek(movers: movers)
+            mover.seek(attractors: attractors)
+            mover.averageAcceleration(movers.count - attractors.count - 1)
+            mover.applyAcceleration()
+            mover.wrap(in: canvas)
+            mover.applyVelocity()
+        }
+    }
+    
+    func drawMovers() {
+        for mover in movers {
+            mover.draw(in: canvas)
+        }
     }
     
 }

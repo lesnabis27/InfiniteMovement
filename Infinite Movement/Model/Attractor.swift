@@ -16,7 +16,7 @@ class Attractor: DraggableViewDelegate, Massive {
     var location: CGPoint
     var mass: CGFloat
     
-    fileprivate let radius: CGFloat = 20.0
+    fileprivate let radius: CGFloat = 40.0
     
     init(_ point: CGPoint) {
         view = AttractorView(frame: CGRect(
@@ -26,7 +26,14 @@ class Attractor: DraggableViewDelegate, Massive {
                                     height: radius)
         )
         self.location = point
-        mass = 100
+        mass = 1000
+        view.delegate = self
+    }
+    
+    // MARK: - DraggableViewDelegate
+    
+    func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, velocityInView: CGPoint) {
+        location = originalCenter + translation
     }
     
 }
