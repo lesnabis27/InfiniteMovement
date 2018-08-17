@@ -23,7 +23,6 @@ precedencegroup DotProductPrecedence {
 infix operator •: DotProductPrecedence
 
 // Incorporate vector operations into CGPoint
-
 extension CGPoint {
     
     public static let tau = CGFloat.pi * 2
@@ -80,7 +79,15 @@ extension CGPoint {
         return CGPoint(x: left.x / right, y: left.y / right)
     }
     
+    public static func /(left: CGPoint, right: Int) -> CGPoint {
+        return left / CGFloat(right)
+    }
+    
     public static func /=(left: inout CGPoint, right: CGFloat) {
+        left = left / right
+    }
+    
+    public static func /=(left: inout CGPoint, right: Int) {
         left = left / right
     }
     
@@ -167,6 +174,20 @@ extension CGPoint {
     
     public static func randomVector() -> CGPoint {
         return CGPoint.init(fromAngle: CGFloat.random(in: 0..<tau), magnitude: CGFloat.random(in: 0...1))
+    }
+    
+}
+
+extension Array {
+    
+    // Rotate array by a given number of positions
+    public mutating func shiftRight(by amount: Int = 1) {
+        var shiftAmount = amount
+        assert(-count...count ~= amount, "Shift amount out of bounds")
+        if shiftAmount < 0 {
+            shiftAmount += count
+        }
+        self = Array(self[shiftAmount ..< count] + self[0 ..< shiftAmount])
     }
     
 }

@@ -54,9 +54,10 @@ class Mover: NSObject, Massive {
     
     // MARK: - Movement
     
+    // Apply acceleration to velocity and velocity to acceleration, reset acceleration for next loop
     func move() {
-        velocity = velocity.limit(10) // TODO: Change velocity limit to a user definable constant
         velocity += acceleration
+        velocity = velocity.limit(10) // TODO: Change velocity limit to a user definable constant
         location += velocity
         acceleration.zero()
     }
@@ -89,6 +90,7 @@ class Mover: NSObject, Massive {
         }
     }
     
+    // Accelerate toward an array of movers
     func seek(movers: [Mover]) {
         for mover in movers {
             if mover != self {
@@ -97,12 +99,14 @@ class Mover: NSObject, Massive {
         }
     }
     
+    // Accelerate toward an array of attractors
     func seek(attractors: [Attractor]) {
         for attractor in attractors {
             seek(attractor)
         }
     }
     
+    // Accelerate toward a single massive object
     func seek(_ other: Massive) {
         var temp = other.location - location
         temp = temp.normalize()
@@ -111,7 +115,8 @@ class Mover: NSObject, Massive {
         acceleration += temp
     }
     
-    func averageAcceleration(_ count: CGFloat) {
+    // Divide the acceleration by a number, averaging by number of objects contributing to acceleration
+    func averageAcceleration(_ count: Int) {
         if count > 1 {
             acceleration /= count
         }
