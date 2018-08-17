@@ -10,7 +10,7 @@ import UIKit
 
 // An object that moves around the canvas in accordance with the physics
 
-class Mover: NSObject {
+class Mover: NSObject, Massive {
     
     // MARK: - Properties
     
@@ -92,34 +92,26 @@ class Mover: NSObject {
     func seek(movers: [Mover]) {
         for mover in movers {
             if mover != self {
-                seek(mover: mover)
+                seek(mover)
             }
         }
     }
     
-    func seek(mover: Mover) {
-        var temp = mover.location - location
-        temp = temp.normalize()
-        temp *= mass * mover.mass / location.squaredDistanceTo(mover.location)
-        temp *= 0.1 // TODO: Change G to a user definable constant
-        acceleration += temp
-    }
-    
     func seek(attractors: [Attractor]) {
         for attractor in attractors {
-            seek(attractor: attractor)
+            seek(attractor)
         }
     }
     
-    func seek(attractor: Attractor) {
-        var temp = attractor.point - location
+    func seek(_ other: Massive) {
+        var temp = other.location - location
         temp = temp.normalize()
-        temp *= mass * attractor.mass / location.squaredDistanceTo(attractor.point)
+        temp *= mass * other.mass / location.squaredDistanceTo(other.location)
         temp *= 0.1 // TODO: Change G to a user definable constant
         acceleration += temp
     }
     
-    func adjustAccelerationToNumberOfInteractions(_ count: CGFloat) {
+    func averageAcceleration(_ count: CGFloat) {
         if count > 1 {
             acceleration /= count
         }

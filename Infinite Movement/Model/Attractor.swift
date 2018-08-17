@@ -10,10 +10,10 @@ import UIKit
 
 // Attractor stores a view to visualize a gravitational point and the model to interact with the physics simulation
 
-class Attractor: DraggableViewDelegate {
+class Attractor: DraggableViewDelegate, Massive {
     
     var view: AttractorView
-    var point: CGPoint
+    var location: CGPoint
     var mass: CGFloat
     
     fileprivate let radius: CGFloat = 20.0
@@ -25,7 +25,7 @@ class Attractor: DraggableViewDelegate {
                                     width: radius,
                                     height: radius)
         )
-        self.point = point
+        self.location = point
         mass = 100
     }
     
