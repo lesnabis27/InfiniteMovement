@@ -14,6 +14,7 @@ class Attractor: DraggableViewDelegate {
     
     var view: AttractorView
     var point: CGPoint
+    var mass: CGFloat
     
     fileprivate let radius: CGFloat = 20.0
     
@@ -25,6 +26,7 @@ class Attractor: DraggableViewDelegate {
                                     height: radius)
         )
         self.point = point
+        mass = 100
     }
     
 }

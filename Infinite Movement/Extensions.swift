@@ -84,9 +84,15 @@ extension CGPoint {
         left = left / right
     }
     
+    public mutating func zero() {
+        x = 0
+        y = 0
+    }
+    
     public var isZero: Bool {
         return x == 0.0 && y == 0.0
     }
+    
     
     public var magnitude: CGFloat {
         get {
