@@ -42,20 +42,22 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         drawMovers()
         // Calculate frames per second, for debug
         fps.update()
-        print(fps.averageString)
+        //print(fps.averageString)
     }
     
     // MARK: - TappableViewDelegate
     
+    // Add an attractor to the array and add its view to this view
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
         attractors.append(Attractor(location))
         view.addSubview(attractors.last!.view)
+        //UIView.transition(with: attractors.last!.view, duration: 0.3, options: .curveEaseOut, animations: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
     }
     
     // MARK: - Movers
     
     func initMovers(in view: UIView) {
-        for _ in (0..<100) {
+        for _ in (0..<50) {
             movers.append(Mover(in: canvas))
         }
     }

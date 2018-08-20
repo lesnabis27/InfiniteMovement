@@ -35,9 +35,6 @@ class CanvasView: UIView {
         let location = tapGesture.location(in: superview)
         
         switch tapGesture.state {
-        case .began:
-            delegate?.tapGestureDidBegin?(tapGesture, location: location)
-            break
         case .ended:
             delegate?.tapGestureDidEnd?(tapGesture, location: location)
             break

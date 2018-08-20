@@ -102,7 +102,7 @@ class Mover: NSObject, Massive {
         var temp = other.location - location
         temp = temp.normalize()
         temp *= mass * other.mass / location.distanceTo(other.location)
-        temp *= 2 // TODO: Change G to a user definable constant
+        temp *= 1 // TODO: Change G to a user definable constant
         acceleration += temp
     }
     

@@ -10,8 +10,8 @@ import UIKit
 
 @objc
 protocol DraggableViewDelegate: class {
-    @objc optional func panGestureDidBegin(_ panGesture: UIPanGestureRecognizer, originalCener: CGPoint)
-    @objc optional func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, velocityInView: CGPoint)
-    @objc optional func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, velocityInView: CGPoint)
-    @objc optional func panGestureStateToOriginal(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, velocityInView: CGPoint)
+    @objc optional func panGestureDidBegin(_ panGesture: UIPanGestureRecognizer, originalCener: CGPoint, sender: UIView)
+    @objc optional func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView)
+    @objc optional func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView)
+    @objc optional func panGestureStateToOriginal(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView)
 }

@@ -10,7 +10,7 @@ import UIKit
 
 // Attractor stores a view to visualize a gravitational point and the model to interact with the physics simulation
 
-class Attractor: DraggableViewDelegate, Massive {
+class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive {
     
     var view: AttractorView
     var location: CGPoint
@@ -25,15 +25,27 @@ class Attractor: DraggableViewDelegate, Massive {
                                     width: radius,
                                     height: radius)
         )
-        self.location = point
+        location = point
         mass = 1000
         view.delegate = self
+        view.tapDelegate = self
     }
     
     // MARK: - DraggableViewDelegate
     
-    func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, velocityInView: CGPoint) {
+    func panGestureDidBegin(_ panGesture: UIPanGestureRecognizer, originalCener: CGPoint, sender: UIView) {
+        
+    }
+    
+    func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
         location = originalCenter + translation
+    }
+    
+    // MARK: - TappableViewDelegate
+    
+    func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
+        view.removeFromSuperview()
+        // Send identifier to ViewController to remove this object from the array
     }
     
 }

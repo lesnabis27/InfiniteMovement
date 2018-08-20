@@ -11,17 +11,21 @@ import UIKit
 // This is a dot to represent a gravitational attractor on the screen
 
 class AttractorView: DraggableView {
-
+    
+    weak var tapDelegate: TappableViewDelegate?
+    var tapGestureRecognizer: UITapGestureRecognizer?
     let effectBackground = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initEffect()
+        initTapGesture()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initEffect()
+        initTapGesture()
     }
     
     func initEffect() {
@@ -53,5 +57,25 @@ class AttractorView: DraggableView {
         layer.shadowRadius = 4
         layer.shadowPath = shadowPath.cgPath
     }
-
+    
+    // MARK: - Tap Gesture Recognizer
+    
+    func initTapGesture() {
+        isUserInteractionEnabled = true
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction(_:)))
+        self.addGestureRecognizer(tapGestureRecognizer!)
+    }
+    
+    @objc func tapGestureAction(_ tapGesture: UITapGestureRecognizer) {
+        let location = tapGesture.location(in: superview)
+        
+        switch tapGesture.state {
+        case .ended:
+            tapDelegate?.tapGestureDidEnd?(tapGesture, location: location)
+            break
+        default:
+            break
+        }
+    }
+    
 }

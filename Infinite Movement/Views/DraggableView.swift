@@ -33,22 +33,21 @@ class DraggableView: UIView {
     
     @objc func panGestureAction(_ panGesture: UIPanGestureRecognizer) {
         let translation = panGesture.translation(in: superview)
-        let velocityInView = panGesture.velocity(in: superview)
         
         switch panGesture.state {
         case .began:
             originalPosition = self.center
-            delegate?.panGestureDidBegin?(panGesture, originalCener: originalPosition!)
+            delegate?.panGestureDidBegin?(panGesture, originalCener: originalPosition!, sender: self)
             break
         case .changed:
             self.frame.origin = CGPoint(
                 x: originalPosition!.x - self.bounds.midX + translation.x,
                 y: originalPosition!.y - self.bounds.midY + translation.y
             )
-            delegate?.panGestureDidChange?(panGesture, originalCenter: originalPosition!, translation: translation, velocityInView: velocityInView)
+            delegate?.panGestureDidChange?(panGesture, originalCenter: originalPosition!, translation: translation, sender: self)
             break
         case .ended:
-            delegate?.panGestureDidEnd?(panGesture, originalCenter: originalPosition!, translation: translation, velocityInView: velocityInView)
+            delegate?.panGestureDidEnd?(panGesture, originalCenter: originalPosition!, translation: translation, sender: self)
             break
         default:
             break
