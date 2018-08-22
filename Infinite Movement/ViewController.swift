@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DraggableViewDelegate, TappableViewDelegate {
+class ViewController: UIViewController, DraggableViewDelegate, TappableViewDelegate, AttractorDelegate {
 
     var timer: Timer!
     var fps = FPSMonitor()
@@ -51,7 +51,21 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
         attractors.append(Attractor(location))
         view.addSubview(attractors.last!.view)
+        // Set this view controller as the new attractor's delegate
+        attractors.last!.delegate = self
         //UIView.transition(with: attractors.last!.view, duration: 0.3, options: .curveEaseOut, animations: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+    }
+    
+    // MARK: - AttractorDelegate
+    
+    // Remove an attractor from the array
+    func removeFromArray(_ attractor: Attractor) {
+        for index in 0..<attractors.count {
+            if attractors[index] == attractor {
+                attractors.remove(at: index)
+                return
+            }
+        }
     }
     
     // MARK: - Movers

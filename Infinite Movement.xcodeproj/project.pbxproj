@@ -17,6 +17,7 @@
 		222E013E2125A18300FF2D2A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E013D2125A18300FF2D2A /* Extensions.swift */; };
 		222E014021263C4C00FF2D2A /* Mover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E013F21263C4C00FF2D2A /* Mover.swift */; };
 		222E014221271F9B00FF2D2A /* Massive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E014121271F9B00FF2D2A /* Massive.swift */; };
+		22469BB2212B92F8002F5DA9 /* AttractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */; };
 		22D312B2211B822900EAAA83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312B1211B822900EAAA83 /* AppDelegate.swift */; };
 		22D312B4211B822900EAAA83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312B3211B822900EAAA83 /* ViewController.swift */; };
 		22D312B7211B822900EAAA83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D312B5211B822900EAAA83 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		222E013D2125A18300FF2D2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		222E013F21263C4C00FF2D2A /* Mover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mover.swift; sourceTree = "<group>"; };
 		222E014121271F9B00FF2D2A /* Massive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Massive.swift; sourceTree = "<group>"; };
+		22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractorDelegate.swift; sourceTree = "<group>"; };
 		22D312AE211B822900EAAA83 /* Infinite Movement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinite Movement.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D312B1211B822900EAAA83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22D312B3211B822900EAAA83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				222342742124A38A00E0813E /* DraggableViewDelegate.swift */,
 				222E013B21250D9F00FF2D2A /* TappableViewDelegate.swift */,
+				22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */,
 				222E014121271F9B00FF2D2A /* Massive.swift */,
 			);
 			path = Protocols;
@@ -265,6 +268,7 @@
 				222E014221271F9B00FF2D2A /* Massive.swift in Sources */,
 				222E013E2125A18300FF2D2A /* Extensions.swift in Sources */,
 				22D312D5211B8DC600EAAA83 /* CanvasView.swift in Sources */,
+				22469BB2212B92F8002F5DA9 /* AttractorDelegate.swift in Sources */,
 				22D312B2211B822900EAAA83 /* AppDelegate.swift in Sources */,
 				222E0138212506EA00FF2D2A /* Attractor.swift in Sources */,
 				222342752124A38A00E0813E /* DraggableViewDelegate.swift in Sources */,
