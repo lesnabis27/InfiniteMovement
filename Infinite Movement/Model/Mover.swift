@@ -14,29 +14,47 @@ class Mover: NSObject, Massive {
     
     // MARK: - Properties
     
-    var location = CGPoint()
+    var locations: [CGPoint]?
     var velocity = CGPoint()
     var acceleration = CGPoint()
     var mass: CGFloat = 1
     var color = UIColor.orange
     
+    // Return the first item in locations, rotate locations and set current location
+    var location: CGPoint {
+        get {
+            return locations!.first!
+        }
+        set(newLocation) {
+            locations!.shiftRight()
+            locations![0] = newLocation
+        }
+    }
+    
     // MARK: - Initializers
     
     override init() {
         super.init()
+        initLocations(at: CGPoint())
     }
     
     init(at point: CGPoint) {
-        location = point
         super.init()
+        initLocations(at: point)
     }
     
     init(in view: UIView) {
-        location = CGPoint(
+        super.init()
+        let startingPoint = CGPoint(
             x: CGFloat.random(in: 0...view.bounds.width),
             y: CGFloat.random(in: 0...view.bounds.height)
         )
-        super.init()
+        initLocations(at: startingPoint)
+    }
+    
+    // Initialize locations with given CGPoint
+    private func initLocations(at point: CGPoint) {
+        locations = Array(repeating: point, count: 20)
     }
     
     // MARK: - Movement
@@ -115,11 +133,45 @@ class Mover: NSObject, Massive {
     
     // MARK: - Drawing
     
+    // Draw an ellipse
     func draw(in view: UIView) {
         let path = UIBezierPath(ovalIn: CGRect(
             origin: location,
             size: CGSize(width: 10, height: 10)
         ))
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = color.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 3
+        view.layer.addSublayer(shapeLayer)
+    }
+    
+    // Draw a series of lines
+    func drawLines(in view: UIView) {
+        let path = UIBezierPath(linesFrom: locations!)
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = color.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 3
+        view.layer.addSublayer(shapeLayer)
+    }
+    
+    // Draw a curve
+    func drawCurve(in view: UIView) {
+        let path = UIBezierPath(curveFrom: locations!)
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = color.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = 3
+        view.layer.addSublayer(shapeLayer)
+    }
+    
+    // Draw a simple curve
+    func drawSimpleCurve(in view: UIView) {
+        let path = UIBezierPath(simpleCurveFrom: locations!)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = color.cgColor

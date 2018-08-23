@@ -187,7 +187,53 @@ extension Array {
         if shiftAmount < 0 {
             shiftAmount += count
         }
-        self = Array(self[shiftAmount ..< count] + self[0 ..< shiftAmount])
+        self = Array(self[shiftAmount..<count] + self[0..<shiftAmount])
+    }
+    
+}
+
+extension UIBezierPath {
+    
+    // Create a curve from an array of CGPoints
+    convenience init(curveFrom points: [CGPoint]) {
+        self.init()
+        
+        let controlPoints = Curve.controlPoints(from: points)
+        
+        self.move(to: points[0])
+        for index in 1..<points.count {
+            let segment = controlPoints[index - 1]
+            self.addCurve(to: points[index], controlPoint1: segment.controlPoint1, controlPoint2: segment.controlPoint2)
+        }
+    }
+    
+    // Create a computationally simpler(?) curve from an array of CGPoints
+    convenience init(simpleCurveFrom points: [CGPoint]) {
+        self.init()
+        
+        self.move(to: points[0])
+        var tangent = points[1] - points[0]
+        tangent *= 0.1
+        var controlPoint1 = points[0] + tangent
+        
+        for index in 1..<points.count - 1 {
+            tangent = points[index + 1] - points[index - 1]
+            tangent = tangent.normalize()
+            tangent *= 0.1
+            let controlPoint2 = points[index] - tangent
+            self.addCurve(to: points[index], controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+            controlPoint1 = points[index] + tangent
+        }
+    }
+    
+    // Create a series of line segments from an array of CGPoints
+    convenience init(linesFrom points: [CGPoint]) {
+        self.init()
+        
+        self.move(to: points[0])
+        for index in 1..<points.count {
+            self.addLine(to: points[index])
+        }
     }
     
 }
