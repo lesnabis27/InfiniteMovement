@@ -83,7 +83,8 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
             mover.seek(attractors: attractors)
             mover.averageAcceleration(movers.count - attractors.count - 1)
             mover.applyAcceleration()
-            mover.wrap(in: canvas)
+            //mover.wrap(in: canvas)
+            mover.bounce(in: canvas)
             mover.applyVelocity()
         }
     }
@@ -98,4 +99,3 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
     }
     
 }
-

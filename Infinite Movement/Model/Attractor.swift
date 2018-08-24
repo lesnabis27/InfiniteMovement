@@ -44,6 +44,12 @@ class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive, Equatable
         location = originalCenter + translation
     }
     
+//    func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
+//        if location.x > sender.superview?.safeAreaInsets.bottom {
+//            location.x
+//        }
+//    }
+    
     // MARK: - TappableViewDelegate
     
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {

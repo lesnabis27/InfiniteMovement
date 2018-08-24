@@ -23,11 +23,11 @@ class Mover: NSObject, Massive {
     // Return the first item in locations, rotate locations and set current location
     var location: CGPoint {
         get {
-            return locations!.first!
+            return locations!.last!
         }
         set(newLocation) {
             locations!.shiftRight()
-            locations![0] = newLocation
+            locations![locations!.count - 1] = newLocation
         }
     }
     
@@ -87,15 +87,19 @@ class Mover: NSObject, Massive {
         }
     }
     
-    // Bounce mover off of bounds of view
+    // Bounce mover off of bounds of view - reverses velocity until location is back in bounds
     func bounce(in view: UIView) {
         let maxX = view.bounds.width
         let maxY = view.bounds.height
-        if location.x < 0 || location.x > maxX {
-            velocity.x *= -1
+        if location.x < 0 {
+            velocity.x = abs(velocity.x)
+        } else if location.x > maxX {
+            velocity.x *= abs(velocity.x) * -1
         }
-        if location.y < 0 || location.y > maxY {
-            velocity.y *= -1
+        if location.y < 0 {
+            velocity.y = abs(velocity.y)
+        } else if location.y > maxY {
+            velocity.y *= abs(velocity.y) * -1
         }
     }
     
@@ -155,6 +159,8 @@ class Mover: NSObject, Massive {
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 3
+        shapeLayer.lineCap = .round
+        shapeLayer.lineJoin = .round
         view.layer.addSublayer(shapeLayer)
     }
     
@@ -166,6 +172,8 @@ class Mover: NSObject, Massive {
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 3
+        shapeLayer.lineCap = .round
+        shapeLayer.lineJoin = .round
         view.layer.addSublayer(shapeLayer)
     }
     
@@ -177,6 +185,8 @@ class Mover: NSObject, Massive {
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 3
+        shapeLayer.lineCap = .round
+        shapeLayer.lineJoin = .round
         view.layer.addSublayer(shapeLayer)
     }
 
