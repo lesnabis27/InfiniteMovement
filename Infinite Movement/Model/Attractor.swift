@@ -18,14 +18,14 @@ class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive, Equatable
     var index: Double
     var delegate: AttractorDelegate?
     
-    fileprivate let radius: CGFloat = 40.0
+    fileprivate let diameter: CGFloat = 40.0
     
     init(_ point: CGPoint) {
         view = AttractorView(frame: CGRect(
-                                    x: point.x - radius * 0.5,
-                                    y: point.y - radius * 0.5,
-                                    width: radius,
-                                    height: radius)
+                                    x: point.x - diameter * 0.5,
+                                    y: point.y - diameter * 0.5,
+                                    width: diameter,
+                                    height: diameter)
         )
         location = point
         mass = 1000
@@ -37,18 +37,23 @@ class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive, Equatable
     // MARK: - DraggableViewDelegate
     
     func panGestureDidBegin(_ panGesture: UIPanGestureRecognizer, originalCener: CGPoint, sender: UIView) {
-        
+        // Animation
     }
     
     func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
         location = originalCenter + translation
     }
     
-//    func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
-//        if location.x > sender.superview?.safeAreaInsets.bottom {
-//            location.x
-//        }
-//    }
+    func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
+        if location.y < (sender.superview?.safeAreaInsets.top)! {
+            location.y = (sender.superview?.safeAreaInsets.top)! + diameter * 0.5
+            sender.center.y = location.y
+        } else if location.y > (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! {
+            location.y = (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! - diameter * 0.5
+            sender.center.y = location.y
+        }
+        // Animation
+    }
     
     // MARK: - TappableViewDelegate
     

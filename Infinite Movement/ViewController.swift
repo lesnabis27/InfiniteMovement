@@ -42,7 +42,7 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         drawMovers()
         // Calculate frames per second, for debug
         fps.update()
-        //print(fps.averageString)
+        print(fps.averageString)
     }
     
     // MARK: - TappableViewDelegate
