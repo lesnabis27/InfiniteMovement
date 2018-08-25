@@ -42,7 +42,7 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         drawMovers()
         // Calculate frames per second, for debug
         fps.update()
-        print(fps.averageString)
+        //print(fps.averageString)
     }
     
     // MARK: - TappableViewDelegate
@@ -83,17 +83,15 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
             mover.seek(attractors: attractors)
             mover.averageAcceleration(movers.count - attractors.count - 1)
             mover.applyAcceleration()
-            //mover.wrap(in: canvas)
-            mover.bounce(in: canvas)
+            mover.wrap(in: canvas)
+            //mover.bounce(in: canvas)
+            mover.friction()
             mover.applyVelocity()
         }
     }
     
     func drawMovers() {
         for mover in movers {
-            //mover.draw(in: canvas)
-            //mover.drawCurve(in: canvas)
-            //mover.drawSimpleCurve(in: canvas)
             mover.drawLines(in: canvas)
         }
     }

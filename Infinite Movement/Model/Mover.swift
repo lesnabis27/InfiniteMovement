@@ -20,6 +20,8 @@ class Mover: NSObject, Massive {
     var mass: CGFloat = 1
     var color = UIColor.orange
     
+    static var maxVelocity: CGFloat = 10.0
+    
     // Return the first item in locations, rotate locations and set current location
     var location: CGPoint {
         get {
@@ -54,7 +56,7 @@ class Mover: NSObject, Massive {
     
     // Initialize locations with given CGPoint
     private func initLocations(at point: CGPoint) {
-        locations = Array(repeating: point, count: 20)
+        locations = Array(repeating: point, count: 10)
     }
     
     // MARK: - Movement
@@ -62,7 +64,7 @@ class Mover: NSObject, Massive {
     // Add acceleration to velocity, reset acceleration for next loop
     func applyAcceleration() {
         velocity += acceleration
-        velocity = velocity.limit(10) // TODO: Change velocity limit to a user definable constant
+        velocity = velocity.limit(Mover.maxVelocity) // TODO: Change velocity limit to a user definable constant
         acceleration.zero()
     }
     
@@ -94,12 +96,12 @@ class Mover: NSObject, Massive {
         if location.x < 0 {
             velocity.x = abs(velocity.x)
         } else if location.x > maxX {
-            velocity.x *= abs(velocity.x) * -1
+            velocity.x = abs(velocity.x) * -1
         }
         if location.y < 0 {
             velocity.y = abs(velocity.y)
         } else if location.y > maxY {
-            velocity.y *= abs(velocity.y) * -1
+            velocity.y = abs(velocity.y) * -1
         }
     }
     
@@ -135,6 +137,11 @@ class Mover: NSObject, Massive {
         }
     }
     
+    // Apply friction, lowering the velocity by a percentage
+    func friction() {
+        velocity *= 1
+    }
+    
     // MARK: - Drawing
     
     // Draw an ellipse
@@ -143,43 +150,28 @@ class Mover: NSObject, Massive {
             origin: location,
             size: CGSize(width: 10, height: 10)
         ))
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 3
-        view.layer.addSublayer(shapeLayer)
+        strokePath(path, in: view)
     }
     
     // Draw a series of lines
     func drawLines(in view: UIView) {
-        let path = UIBezierPath(linesFrom: locations!)
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 3
-        shapeLayer.lineCap = .round
-        shapeLayer.lineJoin = .round
-        view.layer.addSublayer(shapeLayer)
+        splitBezierPathAndDrawLines(from: locations!, in: view)
     }
     
-    // Draw a curve
+    // Draw a curve - not in use, just here for reference
     func drawCurve(in view: UIView) {
         let path = UIBezierPath(curveFrom: locations!)
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = 3
-        shapeLayer.lineCap = .round
-        shapeLayer.lineJoin = .round
-        view.layer.addSublayer(shapeLayer)
+        strokePath(path, in: view)
     }
     
-    // Draw a simple curve
+    // Draw a simple curve - not in use just here for reference
     func drawSimpleCurve(in view: UIView) {
         let path = UIBezierPath(simpleCurveFrom: locations!)
+        strokePath(path, in: view)
+    }
+    
+    // Set up and stroke a path
+    func strokePath(_ path: UIBezierPath, in view: UIView) {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = color.cgColor
@@ -190,4 +182,26 @@ class Mover: NSObject, Massive {
         view.layer.addSublayer(shapeLayer)
     }
 
+    // Splits an array of points by gaps of a distance and strokes paths from the arrays
+    private func splitBezierPathAndDrawLines(from points: [CGPoint], in view: UIView) {
+        var paths = [[CGPoint]]()
+        var startNewPath = true
+        for index in 0..<points.count {
+            if startNewPath {
+                paths.append([CGPoint]())
+                startNewPath = false
+            }
+            paths[paths.count - 1].append(points[index])
+            if index < points.count - 1 && points[index].distanceTo(points[index + 1]) > Mover.maxVelocity + 1 {
+                startNewPath = true
+            }
+        }
+        for path in paths {
+            if path.count > 1 {
+                let bezierPath = UIBezierPath(linesFrom: path)
+                strokePath(bezierPath, in: view)
+            }
+        }
+    }
+    
 }

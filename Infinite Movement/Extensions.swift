@@ -229,7 +229,6 @@ extension UIBezierPath {
     // Create a series of line segments from an array of CGPoints
     convenience init(linesFrom points: [CGPoint]) {
         self.init()
-        
         self.move(to: points[0])
         for index in 1..<points.count {
             self.addLine(to: points[index])
