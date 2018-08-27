@@ -10,7 +10,7 @@ import UIKit
 
 // Attractor stores a view to visualize a gravitational point and the model to interact with the physics simulation
 
-class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive, Equatable {
+class Attractor: NSObject, DraggableViewDelegate, UIGestureRecognizerDelegate, TappableViewDelegate, Massive {
     
     var view: AttractorView
     var location: CGPoint
@@ -18,26 +18,28 @@ class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive, Equatable
     var index: Double
     var delegate: AttractorDelegate?
     
-    fileprivate let diameter: CGFloat = 40.0
+    fileprivate let radius: CGFloat = 20.0
     
     init(_ point: CGPoint) {
         view = AttractorView(frame: CGRect(
-                                    x: point.x - diameter * 0.5,
-                                    y: point.y - diameter * 0.5,
-                                    width: diameter,
-                                    height: diameter)
+                                    x: point.x - radius,
+                                    y: point.y - radius,
+                                    width: radius * 2,
+                                    height: radius * 2)
         )
         location = point
         mass = 1000
         index = Date.timeIntervalSinceReferenceDate
+        super.init()
         view.delegate = self
         view.tapDelegate = self
+        // If instantiated outside the safe area, move it to the safe area
     }
     
     // MARK: - DraggableViewDelegate
     
     func panGestureDidBegin(_ panGesture: UIPanGestureRecognizer, originalCener: CGPoint, sender: UIView) {
-        // Animation
+        // Unused right now
     }
     
     func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
@@ -45,25 +47,36 @@ class Attractor: DraggableViewDelegate, TappableViewDelegate, Massive, Equatable
     }
     
     func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
-        if location.y < (sender.superview?.safeAreaInsets.top)! {
-            location.y = (sender.superview?.safeAreaInsets.top)! + diameter * 0.5
-            sender.center.y = location.y
-        } else if location.y > (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! {
-            location.y = (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! - diameter * 0.5
-            sender.center.y = location.y
+        // Constrain attractor to safe area, not available before iOS 11
+        if #available(iOS 11.0, *) {
+            if location.y < (sender.superview?.safeAreaInsets.top)! {
+                location.y = (sender.superview?.safeAreaInsets.top)! + radius
+                sender.center.y = location.y
+            } else if location.y > (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! {
+                location.y = (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! - radius
+                sender.center.y = location.y
+            }
         }
-        // Animation
+        // Return view to original scale
+        UIView.animateTouchUp(target: sender)
+        view.center = location
     }
     
     // MARK: - TappableViewDelegate
     
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
-        // Send identifier to ViewController to remove this object from the array
         delegate?.removeFromArray(self)
-        view.removeFromSuperview()
+        // Animate view leaving
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+            self.view.alpha = 0.0
+            self.view.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+        }) {
+            (value: Bool) in
+            self.view.removeFromSuperview()
+        }
     }
     
-    // MARK: - Equatable
+    // MARK: - Equatable (NSObject)
     
     // Match location and mass -- not 100% foolproof but easy and at this scale nearly impossible that two Attractors will falsly match
     static func == (lhs: Attractor, rhs: Attractor) -> Bool {

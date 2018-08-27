@@ -236,3 +236,21 @@ extension UIBezierPath {
     }
     
 }
+
+extension UIView {
+    
+    // Animate a view on touchdown
+    static public func animateTouchDown(target view: UIView) {
+        UIView.animate(withDuration: 0.1) {
+            view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }
+    }
+    
+    // Animate a view on touchup
+    static public func animateTouchUp(target view: UIView) {
+        UIView.animate(withDuration: 0.1) {
+            view.transform = CGAffineTransform.identity
+        }
+    }
+    
+}

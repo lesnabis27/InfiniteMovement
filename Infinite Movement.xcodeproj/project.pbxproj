@@ -18,6 +18,7 @@
 		222E014021263C4C00FF2D2A /* Mover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E013F21263C4C00FF2D2A /* Mover.swift */; };
 		222E014221271F9B00FF2D2A /* Massive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E014121271F9B00FF2D2A /* Massive.swift */; };
 		22469BB2212B92F8002F5DA9 /* AttractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */; };
+		227B6FAF213355F400EEDB80 /* LongPressableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B6FAE213355F400EEDB80 /* LongPressableViewDelegate.swift */; };
 		228E1937212DF335001F1478 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E1936212DF335001F1478 /* Curve.swift */; };
 		22D312B2211B822900EAAA83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312B1211B822900EAAA83 /* AppDelegate.swift */; };
 		22D312B4211B822900EAAA83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312B3211B822900EAAA83 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		222E013F21263C4C00FF2D2A /* Mover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mover.swift; sourceTree = "<group>"; };
 		222E014121271F9B00FF2D2A /* Massive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Massive.swift; sourceTree = "<group>"; };
 		22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractorDelegate.swift; sourceTree = "<group>"; };
+		227B6FAE213355F400EEDB80 /* LongPressableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressableViewDelegate.swift; sourceTree = "<group>"; };
 		228E1936212DF335001F1478 /* Curve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curve.swift; sourceTree = "<group>"; };
 		22D312AE211B822900EAAA83 /* Infinite Movement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinite Movement.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D312B1211B822900EAAA83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				222342742124A38A00E0813E /* DraggableViewDelegate.swift */,
 				222E013B21250D9F00FF2D2A /* TappableViewDelegate.swift */,
+				227B6FAE213355F400EEDB80 /* LongPressableViewDelegate.swift */,
 				22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */,
 				222E014121271F9B00FF2D2A /* Massive.swift */,
 			);
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				222E013C21250D9F00FF2D2A /* TappableViewDelegate.swift in Sources */,
+				227B6FAF213355F400EEDB80 /* LongPressableViewDelegate.swift in Sources */,
 				22D312B4211B822900EAAA83 /* ViewController.swift in Sources */,
 				222E01362124C48A00FF2D2A /* OverlayView.swift in Sources */,
 				22176405211BE2F1005F6986 /* FPSMonitor.swift in Sources */,
@@ -439,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LWHS65CZ4J;
 				INFOPLIST_FILE = "Infinite Movement/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LWHS65CZ4J;
 				INFOPLIST_FILE = "Infinite Movement/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

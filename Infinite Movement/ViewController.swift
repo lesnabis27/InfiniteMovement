@@ -42,7 +42,7 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         drawMovers()
         // Calculate frames per second, for debug
         fps.update()
-        print(fps.averageString)
+        //print(fps.averageString)
     }
     
     // MARK: - TappableViewDelegate
@@ -53,7 +53,6 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
         view.addSubview(attractors.last!.view)
         // Set this view controller as the new attractor's delegate
         attractors.last!.delegate = self
-        //UIView.transition(with: attractors.last!.view, duration: 0.3, options: .curveEaseOut, animations: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
     }
     
     // MARK: - AttractorDelegate
