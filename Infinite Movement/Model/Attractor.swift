@@ -33,13 +33,14 @@ class Attractor: NSObject, DraggableViewDelegate, UIGestureRecognizerDelegate, T
         super.init()
         view.delegate = self
         view.tapDelegate = self
-        // If instantiated outside the safe area, move it to the safe area
+        // Constrain view to safe area - can't get safe area until the view is added to the superview :/
     }
     
     // MARK: - DraggableViewDelegate
     
     func panGestureDidBegin(_ panGesture: UIPanGestureRecognizer, originalCener: CGPoint, sender: UIView) {
-        // Unused right now
+        // Return view to original scale
+        UIView.animateTouchUp(target: sender)
     }
     
     func panGestureDidChange(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
@@ -48,32 +49,25 @@ class Attractor: NSObject, DraggableViewDelegate, UIGestureRecognizerDelegate, T
     
     func panGestureDidEnd(_ panGesture: UIPanGestureRecognizer, originalCenter: CGPoint, translation: CGPoint, sender: UIView) {
         // Constrain attractor to safe area, not available before iOS 11
-        if #available(iOS 11.0, *) {
-            if location.y < (sender.superview?.safeAreaInsets.top)! {
-                location.y = (sender.superview?.safeAreaInsets.top)! + radius
-                sender.center.y = location.y
-            } else if location.y > (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! {
-                location.y = (sender.superview?.frame.height)! - (sender.superview?.safeAreaInsets.bottom)! - radius
-                sender.center.y = location.y
-            }
-        }
-        // Return view to original scale
-        UIView.animateTouchUp(target: sender)
+        constrainToSafeArea()
         view.center = location
     }
     
     // MARK: - TappableViewDelegate
     
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
-        delegate?.removeFromArray(self)
-        // Animate view leaving
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
-            self.view.alpha = 0.0
-            self.view.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
-        }) {
-            (value: Bool) in
-            self.view.removeFromSuperview()
-        }
+        
+        delegate?.presentAttractorOptions(sender: self)
+        
+//        delegate?.removeFromArray(self)
+//        // Animate view leaving
+//        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+//            self.view.alpha = 0.0
+//            self.view.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+//        }) {
+//            (value: Bool) in
+//            self.view.removeFromSuperview()
+//        }
     }
     
     // MARK: - Equatable (NSObject)
@@ -81,6 +75,21 @@ class Attractor: NSObject, DraggableViewDelegate, UIGestureRecognizerDelegate, T
     // Match location and mass -- not 100% foolproof but easy and at this scale nearly impossible that two Attractors will falsly match
     static func == (lhs: Attractor, rhs: Attractor) -> Bool {
         return lhs.location == rhs.location && lhs.mass == rhs.mass
+    }
+    
+    // MARK: - Methods
+    
+    // Move the location and view into the superview's safe area
+    private func constrainToSafeArea() {
+        if #available(iOS 11.0, *) {
+            if location.y < (view.superview?.safeAreaInsets.top)! {
+                location.y = (view.superview?.safeAreaInsets.top)! + radius
+                view.center.y = location.y
+            } else if location.y > (view.superview?.frame.height)! - (view.superview?.safeAreaInsets.bottom)! {
+                location.y = (view.superview?.frame.height)! - (view.superview?.safeAreaInsets.bottom)! - radius
+                view.center.y = location.y
+            }
+        }
     }
     
 }

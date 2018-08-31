@@ -10,4 +10,5 @@ import Foundation
 
 protocol AttractorDelegate {
     func removeFromArray(_ attractor: Attractor)
+    func presentAttractorOptions(sender: Attractor)
 }

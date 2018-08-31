@@ -19,6 +19,9 @@
 		222E014221271F9B00FF2D2A /* Massive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E014121271F9B00FF2D2A /* Massive.swift */; };
 		22469BB2212B92F8002F5DA9 /* AttractorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */; };
 		227B6FAF213355F400EEDB80 /* LongPressableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B6FAE213355F400EEDB80 /* LongPressableViewDelegate.swift */; };
+		227B6FB2213721A300EEDB80 /* AttractorOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B6FB1213721A300EEDB80 /* AttractorOptionsViewController.swift */; };
+		227B6FB5213724A400EEDB80 /* OptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B6FB4213724A400EEDB80 /* OptionButton.swift */; };
+		227B6FB7213724C800EEDB80 /* OptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B6FB6213724C800EEDB80 /* OptionTextField.swift */; };
 		228E1937212DF335001F1478 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228E1936212DF335001F1478 /* Curve.swift */; };
 		22D312B2211B822900EAAA83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312B1211B822900EAAA83 /* AppDelegate.swift */; };
 		22D312B4211B822900EAAA83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312B3211B822900EAAA83 /* ViewController.swift */; };
@@ -52,6 +55,9 @@
 		222E014121271F9B00FF2D2A /* Massive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Massive.swift; sourceTree = "<group>"; };
 		22469BB1212B92F8002F5DA9 /* AttractorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractorDelegate.swift; sourceTree = "<group>"; };
 		227B6FAE213355F400EEDB80 /* LongPressableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressableViewDelegate.swift; sourceTree = "<group>"; };
+		227B6FB1213721A300EEDB80 /* AttractorOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractorOptionsViewController.swift; sourceTree = "<group>"; };
+		227B6FB4213724A400EEDB80 /* OptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButton.swift; sourceTree = "<group>"; };
+		227B6FB6213724C800EEDB80 /* OptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTextField.swift; sourceTree = "<group>"; };
 		228E1936212DF335001F1478 /* Curve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curve.swift; sourceTree = "<group>"; };
 		22D312AE211B822900EAAA83 /* Infinite Movement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinite Movement.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22D312B1211B822900EAAA83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +109,8 @@
 				222342762124A57800E0813E /* DraggableView.swift */,
 				222E01352124C48A00FF2D2A /* OverlayView.swift */,
 				222E01392125089200FF2D2A /* AttractorView.swift */,
+				227B6FB4213724A400EEDB80 /* OptionButton.swift */,
+				227B6FB6213724C800EEDB80 /* OptionTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,6 +124,15 @@
 				228E1936212DF335001F1478 /* Curve.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		227B6FB02137211600EEDB80 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				22D312B3211B822900EAAA83 /* ViewController.swift */,
+				227B6FB1213721A300EEDB80 /* AttractorOptionsViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		22D312A5211B822900EAAA83 = {
@@ -144,7 +161,7 @@
 				222342732124A32100E0813E /* Protocols */,
 				222342782124AA3600E0813E /* Views */,
 				222342792124AAA100E0813E /* Model */,
-				22D312B3211B822900EAAA83 /* ViewController.swift */,
+				227B6FB02137211600EEDB80 /* View Controllers */,
 				22D312B5211B822900EAAA83 /* Main.storyboard */,
 				22D312B8211B822B00EAAA83 /* Assets.xcassets */,
 				22D312BA211B822B00EAAA83 /* LaunchScreen.storyboard */,
@@ -267,11 +284,14 @@
 			files = (
 				222E013C21250D9F00FF2D2A /* TappableViewDelegate.swift in Sources */,
 				227B6FAF213355F400EEDB80 /* LongPressableViewDelegate.swift in Sources */,
+				227B6FB7213724C800EEDB80 /* OptionTextField.swift in Sources */,
 				22D312B4211B822900EAAA83 /* ViewController.swift in Sources */,
 				222E01362124C48A00FF2D2A /* OverlayView.swift in Sources */,
 				22176405211BE2F1005F6986 /* FPSMonitor.swift in Sources */,
 				222342772124A57800E0813E /* DraggableView.swift in Sources */,
 				222E013A2125089200FF2D2A /* AttractorView.swift in Sources */,
+				227B6FB2213721A300EEDB80 /* AttractorOptionsViewController.swift in Sources */,
+				227B6FB5213724A400EEDB80 /* OptionButton.swift in Sources */,
 				222E014221271F9B00FF2D2A /* Massive.swift in Sources */,
 				222E013E2125A18300FF2D2A /* Extensions.swift in Sources */,
 				22D312D5211B8DC600EAAA83 /* CanvasView.swift in Sources */,

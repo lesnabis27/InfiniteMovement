@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DraggableViewDelegate, TappableViewDelegate, AttractorDelegate {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, DraggableViewDelegate, TappableViewDelegate, AttractorDelegate {
 
     var timer: Timer!
     var fps = FPSMonitor()
@@ -65,6 +65,29 @@ class ViewController: UIViewController, DraggableViewDelegate, TappableViewDeleg
                 return
             }
         }
+    }
+    
+    // Present the attractor options view controller
+    func presentAttractorOptions(sender: Attractor) {
+        // Get the view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "AttractorOptions") as! AttractorOptionsViewController
+        controller.modalPresentationStyle = .popover
+        controller.preferredContentSize = CGSize(width: 200, height: 300)
+        controller.attractor = sender
+        // Configure the pop over
+        let presentationController = controller.popoverPresentationController
+        presentationController?.sourceView = sender.view
+        presentationController?.sourceRect = sender.view.bounds
+        presentationController?.delegate = self
+        // Present the pop over
+        self.present(controller, animated: true)
+        UIView.animateTouchUp(target: sender.view)
+    }
+    
+    // Popover presentation
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     // MARK: - Movers
