@@ -31,8 +31,25 @@ class AttractorOptionsView: UIView {
         controller!.incrementMass()
     }
     
+    @IBAction func massTextFieldChanged(_ sender: UITextField) {
+        guard let value = NumberFormatter().number(from: sender.text ?? "empty") else { return }
+        controller!.enterMass(value: CGFloat(truncating: value))
+    }
+    
     @IBAction func removeButtonPressed(_ sender: UIButton) {
         controller!.removeAttractor()
+    }
+    
+    // MARK: - Initializers
+    
+    override func awakeFromNib() {
+        configureView()
+    }
+    
+    // MARK: - Private Functions
+    
+    private func configureView() {
+        massTextField.textAlignment = .center
     }
     
 }
