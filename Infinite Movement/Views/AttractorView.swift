@@ -13,30 +13,25 @@ import UIKit
 class AttractorView: DraggableView {
     
     weak var tapDelegate: TappableViewDelegate?
-    weak var longPressDelegate: LongPressableViewDelegate?
     var tapGestureRecognizer: UITapGestureRecognizer?
-    var longPressGestureRecognizer: UILongPressGestureRecognizer?
-    let effectBackground = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initEffect()
         initTapGesture()
-        initLongPressGesture()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initEffect()
         initTapGesture()
-        initLongPressGesture()
     }
     
     // Graphical stuff, effects and shape and whatever
     
     func initEffect() {
         initLayer()
-        initEffectView()
+        initEffectView(effectBackground: UIVisualEffectView(effect: UIBlurEffect(style: .dark)))
     }
     
     func initLayer() {
@@ -45,12 +40,14 @@ class AttractorView: DraggableView {
         layer.masksToBounds = false
     }
     
-    func initEffectView() {
+    func initEffectView(effectBackground: UIVisualEffectView) {
         effectBackground.frame = bounds
         effectBackground.layer.cornerRadius = frame.width * 0.5
         effectBackground.layer.masksToBounds = true
+        effectBackground.tag = 70
         addSubview(effectBackground)
         sendSubviewToBack(effectBackground)
+        self.setNeedsLayout()
     }
     
     override func layoutSubviews() {
@@ -94,27 +91,6 @@ class AttractorView: DraggableView {
         switch tapGesture.state {
         case .ended:
             tapDelegate?.tapGestureDidEnd?(tapGesture, location: location)
-            break
-        default:
-            break
-        }
-    }
-    
-    // MARK: - Long Press Gesture Recognizer
-    
-    func initLongPressGesture() {
-        isUserInteractionEnabled = true
-        longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressGestureAction(_:)))
-        longPressGestureRecognizer!.minimumPressDuration = 1
-        self.addGestureRecognizer(longPressGestureRecognizer!)
-    }
-    
-    @objc func longPressGestureAction(_ longPressGesture: UILongPressGestureRecognizer) {
-        switch longPressGesture.state {
-        case .began:
-            break
-        case .ended:
-            UIView.animateTouchUp(target: self)
             break
         default:
             break

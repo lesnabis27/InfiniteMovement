@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Infinite_Movement" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0p-j6-I6B" customClass="CanvasView" customModule="Infinite_Movement" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -44,29 +44,31 @@
         <scene sceneID="wkP-zL-I8d">
             <objects>
                 <viewController storyboardIdentifier="AttractorOptions" modalPresentationStyle="currentContext" id="heV-ou-xcJ" customClass="AttractorOptionsViewController" customModule="Infinite_Movement" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="psY-ux-PaH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <view key="view" contentMode="scaleToFill" id="psY-ux-PaH" customClass="AttractorOptionsView" customModule="Infinite_Movement" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attractor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMp-Pg-dgi">
-                                <rect key="frame" x="16" y="52" width="160" height="43"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-ct-am0" customClass="OptionButton" customModule="Infinite_Movement" customModuleProvider="target">
-                                <rect key="frame" x="16" y="111" width="343" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-ct-am0">
+                                <rect key="frame" x="16" y="36" width="343" height="50"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="D8T-CW-c30"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Reverse">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="reverseButtonPressed:" destination="psY-ux-PaH" eventType="touchUpInside" id="rmB-Eq-Hr6"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gQ-QF-BeE" customClass="OptionButton" customModule="Infinite_Movement" customModuleProvider="target">
-                                <rect key="frame" x="16" y="177" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gQ-QF-BeE">
+                                <rect key="frame" x="16" y="102" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="3FD-pX-mb5"/>
@@ -74,32 +76,48 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="-">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="decrementMassButtonPressed:" destination="psY-ux-PaH" eventType="touchUpInside" id="dbV-F9-ZdP"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Mass" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wv1-sy-xQo">
-                                <rect key="frame" x="74" y="177" width="227" height="50"/>
+                                <rect key="frame" x="74" y="102" width="227" height="50"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OKH-57-PUW"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUW-Qp-Tpd" customClass="OptionButton" customModule="Infinite_Movement" customModuleProvider="target">
-                                <rect key="frame" x="16" y="243" width="343" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUW-Qp-Tpd">
+                                <rect key="frame" x="16" y="168" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.58823529411764708" green="0.13725490196078433" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Szc-w1-HJ2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Remove">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="removeButtonPressed:" destination="psY-ux-PaH" eventType="touchUpInside" id="rg7-RC-BFk"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVG-PW-b7g" customClass="OptionButton" customModule="Infinite_Movement" customModuleProvider="target">
-                                <rect key="frame" x="309" y="177" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVG-PW-b7g">
+                                <rect key="frame" x="309" y="102" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="4Vk-zX-rSf"/>
@@ -107,8 +125,16 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="+">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="incrementMassButtonPressed:" destination="psY-ux-PaH" eventType="touchUpInside" id="Ypl-hs-qPv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,22 +144,25 @@
                             <constraint firstItem="HUW-Qp-Tpd" firstAttribute="leading" secondItem="80I-Hd-bLm" secondAttribute="leading" constant="16" id="F27-ZR-LnT"/>
                             <constraint firstItem="uVG-PW-b7g" firstAttribute="leading" secondItem="Wv1-sy-xQo" secondAttribute="trailing" constant="8" id="Hb0-8e-F3g"/>
                             <constraint firstItem="6gQ-QF-BeE" firstAttribute="leading" secondItem="80I-Hd-bLm" secondAttribute="leading" constant="16" id="aIg-MA-zAp"/>
+                            <constraint firstItem="UDg-ct-am0" firstAttribute="top" secondItem="80I-Hd-bLm" secondAttribute="top" constant="16" id="chx-Us-v0A"/>
                             <constraint firstItem="HUW-Qp-Tpd" firstAttribute="top" secondItem="6gQ-QF-BeE" secondAttribute="bottom" constant="16" id="cos-nq-v85"/>
-                            <constraint firstItem="80I-Hd-bLm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SMp-Pg-dgi" secondAttribute="trailing" symbolic="YES" id="d5p-42-69P"/>
                             <constraint firstItem="UDg-ct-am0" firstAttribute="leading" secondItem="80I-Hd-bLm" secondAttribute="leading" constant="16" id="gYt-hb-gPe"/>
                             <constraint firstItem="Wv1-sy-xQo" firstAttribute="top" secondItem="UDg-ct-am0" secondAttribute="bottom" constant="16" id="iLK-nh-rVx"/>
                             <constraint firstItem="80I-Hd-bLm" firstAttribute="trailing" secondItem="HUW-Qp-Tpd" secondAttribute="trailing" constant="16" id="jAA-4k-h3C"/>
-                            <constraint firstItem="SMp-Pg-dgi" firstAttribute="leading" secondItem="80I-Hd-bLm" secondAttribute="leading" constant="16" id="k4x-BN-gM1"/>
                             <constraint firstItem="80I-Hd-bLm" firstAttribute="trailing" secondItem="UDg-ct-am0" secondAttribute="trailing" constant="16" id="l9t-SH-eGp"/>
-                            <constraint firstItem="SMp-Pg-dgi" firstAttribute="top" secondItem="80I-Hd-bLm" secondAttribute="top" constant="8" id="m9e-FT-MbW"/>
                             <constraint firstItem="80I-Hd-bLm" firstAttribute="trailing" secondItem="uVG-PW-b7g" secondAttribute="trailing" constant="16" id="qhg-dA-GGp"/>
                             <constraint firstItem="Wv1-sy-xQo" firstAttribute="leading" secondItem="6gQ-QF-BeE" secondAttribute="trailing" constant="8" id="sHE-Xx-lun"/>
                             <constraint firstItem="uVG-PW-b7g" firstAttribute="top" secondItem="UDg-ct-am0" secondAttribute="bottom" constant="16" id="w6u-Ty-n04"/>
-                            <constraint firstItem="UDg-ct-am0" firstAttribute="top" secondItem="SMp-Pg-dgi" secondAttribute="bottom" constant="16" id="xrK-s0-1yj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="80I-Hd-bLm"/>
+                        <connections>
+                            <outlet property="massTextField" destination="Wv1-sy-xQo" id="gUy-Hy-fx2"/>
+                        </connections>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="optionsView" destination="psY-ux-PaH" id="R7C-Ti-h2l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ULv-AR-baQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

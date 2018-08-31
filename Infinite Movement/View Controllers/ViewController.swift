@@ -73,7 +73,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "AttractorOptions") as! AttractorOptionsViewController
         controller.modalPresentationStyle = .popover
-        controller.preferredContentSize = CGSize(width: 200, height: 300)
+        controller.preferredContentSize = CGSize(width: 250, height: 214)
         controller.attractor = sender
         // Configure the pop over
         let presentationController = controller.popoverPresentationController

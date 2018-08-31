@@ -56,18 +56,7 @@ class Attractor: NSObject, DraggableViewDelegate, UIGestureRecognizerDelegate, T
     // MARK: - TappableViewDelegate
     
     func tapGestureDidEnd(_ tapGesture: UITapGestureRecognizer, location: CGPoint) {
-        
         delegate?.presentAttractorOptions(sender: self)
-        
-//        delegate?.removeFromArray(self)
-//        // Animate view leaving
-//        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
-//            self.view.alpha = 0.0
-//            self.view.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
-//        }) {
-//            (value: Bool) in
-//            self.view.removeFromSuperview()
-//        }
     }
     
     // MARK: - Equatable (NSObject)
@@ -89,6 +78,18 @@ class Attractor: NSObject, DraggableViewDelegate, UIGestureRecognizerDelegate, T
                 location.y = (view.superview?.frame.height)! - (view.superview?.safeAreaInsets.bottom)! - radius
                 view.center.y = location.y
             }
+        }
+    }
+    
+    public func remove() {
+        delegate?.removeFromArray(self)
+        // Animate view leaving
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+            self.view.alpha = 0.0
+            self.view.transform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+        }) {
+            (value: Bool) in
+            self.view.removeFromSuperview()
         }
     }
     
