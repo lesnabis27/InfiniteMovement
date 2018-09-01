@@ -40,6 +40,7 @@ class AttractorView: DraggableView {
         layer.masksToBounds = false
     }
     
+    // Blur effect view - can be called to change to a different effect, like when the mass changes
     func initEffectView(effectBackground: UIVisualEffectView) {
         effectBackground.frame = bounds
         effectBackground.layer.cornerRadius = frame.width * 0.5
@@ -50,6 +51,7 @@ class AttractorView: DraggableView {
         self.setNeedsLayout()
     }
     
+    // Shadow
     override func layoutSubviews() {
         super.layoutSubviews()
         let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: frame.width * 0.5)
