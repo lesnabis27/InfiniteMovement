@@ -254,3 +254,25 @@ extension UIView {
     }
     
 }
+
+extension CGFloat {
+    
+    // Return half, instead of writing x * 0.5, for clarity
+    public var half: CGFloat {
+        get {
+            return self * 0.5
+        }
+    }
+    
+}
+
+extension CGRect {
+    
+    // Return the center point
+    public var center: CGPoint {
+        get {
+            return CGPoint(x: self.midX, y: self.midY)
+        }
+    }
+    
+}

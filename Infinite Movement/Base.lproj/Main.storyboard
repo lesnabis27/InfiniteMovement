@@ -22,11 +22,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPm-vY-Lfr" customClass="SettingsButton" customModule="Infinite_Movement" customModuleProvider="target">
+                                <rect key="frame" x="287" y="690" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="Dgk-VQ-SCA"/>
+                                    <constraint firstAttribute="width" constant="72" id="Lcz-He-Hwa"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="iconDiameter">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="strokeWeight">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cogLength">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfCogs">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rotation">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AmF-6E-tIl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vPm-vY-Lfr" secondAttribute="trailing" constant="16" id="HPD-XN-SBg"/>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HhW-6p-dZh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vPm-vY-Lfr" secondAttribute="bottom" constant="16" id="fDc-iV-Ers"/>
                             <constraint firstItem="K0p-j6-I6B" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="vQG-Xo-M3r"/>
                             <constraint firstAttribute="bottom" secondItem="K0p-j6-I6B" secondAttribute="bottom" id="zsV-F3-2NW"/>
                         </constraints>

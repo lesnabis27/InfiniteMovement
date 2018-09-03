@@ -10,7 +10,6 @@
 		22176405211BE2F1005F6986 /* FPSMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22176404211BE2F1005F6986 /* FPSMonitor.swift */; };
 		222342752124A38A00E0813E /* DraggableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222342742124A38A00E0813E /* DraggableViewDelegate.swift */; };
 		222342772124A57800E0813E /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222342762124A57800E0813E /* DraggableView.swift */; };
-		222E01362124C48A00FF2D2A /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E01352124C48A00FF2D2A /* OverlayView.swift */; };
 		222E0138212506EA00FF2D2A /* Attractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E0137212506EA00FF2D2A /* Attractor.swift */; };
 		222E013A2125089200FF2D2A /* AttractorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E01392125089200FF2D2A /* AttractorView.swift */; };
 		222E013C21250D9F00FF2D2A /* TappableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E013B21250D9F00FF2D2A /* TappableViewDelegate.swift */; };
@@ -29,6 +28,7 @@
 		22D312BC211B822B00EAAA83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22D312BA211B822B00EAAA83 /* LaunchScreen.storyboard */; };
 		22D312C7211B822B00EAAA83 /* Infinite_MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312C6211B822B00EAAA83 /* Infinite_MovementTests.swift */; };
 		22D312D5211B8DC600EAAA83 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D312D4211B8DC600EAAA83 /* CanvasView.swift */; };
+		22E8359B213C85580038760F /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8359A213C85580038760F /* SettingsButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 		22176404211BE2F1005F6986 /* FPSMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSMonitor.swift; sourceTree = "<group>"; };
 		222342742124A38A00E0813E /* DraggableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableViewDelegate.swift; sourceTree = "<group>"; };
 		222342762124A57800E0813E /* DraggableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
-		222E01352124C48A00FF2D2A /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		222E0137212506EA00FF2D2A /* Attractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attractor.swift; sourceTree = "<group>"; };
 		222E01392125089200FF2D2A /* AttractorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractorView.swift; sourceTree = "<group>"; };
 		222E013B21250D9F00FF2D2A /* TappableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableViewDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		22D312C6211B822B00EAAA83 /* Infinite_MovementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Infinite_MovementTests.swift; sourceTree = "<group>"; };
 		22D312C8211B822B00EAAA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22D312D4211B8DC600EAAA83 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		22E8359A213C85580038760F /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +105,9 @@
 			children = (
 				22D312D4211B8DC600EAAA83 /* CanvasView.swift */,
 				222342762124A57800E0813E /* DraggableView.swift */,
-				222E01352124C48A00FF2D2A /* OverlayView.swift */,
 				222E01392125089200FF2D2A /* AttractorView.swift */,
 				224372C321397C120037B8A1 /* AttractorOptionsView.swift */,
+				22E8359A213C85580038760F /* SettingsButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,7 +282,6 @@
 				222E013C21250D9F00FF2D2A /* TappableViewDelegate.swift in Sources */,
 				227B6FAF213355F400EEDB80 /* LongPressableViewDelegate.swift in Sources */,
 				22D312B4211B822900EAAA83 /* ViewController.swift in Sources */,
-				222E01362124C48A00FF2D2A /* OverlayView.swift in Sources */,
 				22176405211BE2F1005F6986 /* FPSMonitor.swift in Sources */,
 				222342772124A57800E0813E /* DraggableView.swift in Sources */,
 				222E013A2125089200FF2D2A /* AttractorView.swift in Sources */,
@@ -290,6 +289,7 @@
 				222E014221271F9B00FF2D2A /* Massive.swift in Sources */,
 				222E013E2125A18300FF2D2A /* Extensions.swift in Sources */,
 				224372C421397C120037B8A1 /* AttractorOptionsView.swift in Sources */,
+				22E8359B213C85580038760F /* SettingsButton.swift in Sources */,
 				22D312D5211B8DC600EAAA83 /* CanvasView.swift in Sources */,
 				22469BB2212B92F8002F5DA9 /* AttractorDelegate.swift in Sources */,
 				228E1937212DF335001F1478 /* Curve.swift in Sources */,

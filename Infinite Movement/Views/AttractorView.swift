@@ -104,6 +104,17 @@ class AttractorView: DraggableView {
     // This is purely to animate the view when it is touched - be sure to call UIView.animateTouchUp(target:) when any gesture ends to undo this
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         UIView.animateTouchDown(target: self)
+        // Move to top of superview
+        superview?.bringSubviewToFront(self)
+    }
+    
+    // And these are to return to the default state when touches end
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animateTouchUp(target: self)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animateTouchUp(target: self)
     }
     
 }
